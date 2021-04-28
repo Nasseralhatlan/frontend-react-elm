@@ -162,7 +162,6 @@ export default class Register extends Component{
         return(
             <div className="login-cont">
                 <div className="left">
-                    <img alt="" src={ilus}/>
                 </div>
                 <div className="right">
                     <form onSubmit={this.handelSubmit} className="form-card">
