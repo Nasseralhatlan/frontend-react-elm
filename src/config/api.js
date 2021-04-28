@@ -1,5 +1,5 @@
 var config = {
-    URL:'http://68.183.90.24/:9000/',
+    URL:'http://68.183.90.24:9000/',
     ENDPOINT:{
         GET:{
             GET_ALL_USERS: 'users',
