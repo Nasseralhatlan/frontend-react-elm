@@ -119,6 +119,8 @@ class Home extends Component{
                         usersWithAvatar[i].avatar = avatar7;
                     }else if(usersWithAvatar[i].avatar === 8){
                         usersWithAvatar[i].avatar = avatar8;
+                    }else{
+                        usersWithAvatar[i].avatar = avatar1;
                     }    
                 }
 

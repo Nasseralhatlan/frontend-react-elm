@@ -89,6 +89,10 @@ class Account extends Component{
                     this.setState({
                         avatar:avatar8,
                     })
+                }else{
+                    this.setState({
+                        avatar:avatar1,
+                    })
                 }        
 
                 
