@@ -89,6 +89,7 @@
 .search-cont{
     position: relative;
     width: 40%; 
+    height: 42px;
     margin-left: 30%;
     margin-bottom: 20px;  
     margin-top: 50px;
@@ -98,10 +99,11 @@
 
 .search-cont input{
     width: 50%;
-    height: 40px;
+    height: 90%;
     border: 0px;
     outline: none;
     background: white;
+    padding: 0px;
     padding-right: 5px;
     padding-left: 13px;
     font-family: 'Poppins', sans-serif;
@@ -112,7 +114,7 @@
     -moz-box-shadow: -1px -1px 83px 0px rgba(0,0,0,0.1);
 }
 .search-cont .icon{
-    height: 42px;
+    height: 100%;
     background-color: white;
     padding: 0px;
     margin: 0px;
