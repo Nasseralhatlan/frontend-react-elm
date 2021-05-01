@@ -82,67 +82,69 @@ class Home extends Component{
                 }        
 
                 
-            }
-        ).catch(
-            err=>{
-                console.log(err)
-            }
-        )
-
-        axios.get(API_CONFIG.URL+API_CONFIG.ENDPOINT.GET.GET_ALL_USERS,{ 
-            headers: {
-                'Authorization': `Bearer ${token}`,
-            }
-        }).then(
-            res=>{
-
-                var usersWithAvatar = res.data.users;
-
-                var myUserIndex = null
-                for(var i = 0;i<usersWithAvatar.length;i++){
-                    if(usersWithAvatar[i].username === this.state.user.username){
-                        myUserIndex = i;
+        }).then(()=>{
+            axios.get(API_CONFIG.URL+API_CONFIG.ENDPOINT.GET.GET_ALL_USERS,{ 
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                }
+            }).then(
+                res=>{
+    
+                    
+                    var usersWithAvatar = res.data.users;
+    
+                    var myUserIndex = null
+    
+                    
+                    for(var i = 0;i<usersWithAvatar.length;i++){
+                        if(usersWithAvatar[i].username === this.state.user.username){
+                            myUserIndex = i;
+                        }
+                        if(usersWithAvatar[i].avatar === 1){
+                            usersWithAvatar[i].avatar = avatar1;
+                        }else if(usersWithAvatar[i].avatar === 2){
+                            usersWithAvatar[i].avatar = avatar2;
+                        }else if(usersWithAvatar[i].avatar === 3){
+                            usersWithAvatar[i].avatar = avatar3;
+                        }else if(usersWithAvatar[i].avatar === 4){
+                            usersWithAvatar[i].avatar = avatar4;
+                        }else if(usersWithAvatar[i].avatar === 5){
+                            usersWithAvatar[i].avatar = avatar5;
+                        }else if(usersWithAvatar[i].avatar === 6){
+                            usersWithAvatar[i].avatar = avatar6;
+                        }else if(usersWithAvatar[i].avatar === 7){
+                            usersWithAvatar[i].avatar = avatar7;
+                        }else if(usersWithAvatar[i].avatar === 8){
+                            usersWithAvatar[i].avatar = avatar8;
+                        }else{
+                            usersWithAvatar[i].avatar = avatar1;
+                        }    
                     }
-                    if(usersWithAvatar[i].avatar === 1){
-                        usersWithAvatar[i].avatar = avatar1;
-                    }else if(usersWithAvatar[i].avatar === 2){
-                        usersWithAvatar[i].avatar = avatar2;
-                    }else if(usersWithAvatar[i].avatar === 3){
-                        usersWithAvatar[i].avatar = avatar3;
-                    }else if(usersWithAvatar[i].avatar === 4){
-                        usersWithAvatar[i].avatar = avatar4;
-                    }else if(usersWithAvatar[i].avatar === 5){
-                        usersWithAvatar[i].avatar = avatar5;
-                    }else if(usersWithAvatar[i].avatar === 6){
-                        usersWithAvatar[i].avatar = avatar6;
-                    }else if(usersWithAvatar[i].avatar === 7){
-                        usersWithAvatar[i].avatar = avatar7;
-                    }else if(usersWithAvatar[i].avatar === 8){
-                        usersWithAvatar[i].avatar = avatar8;
-                    }else{
-                        usersWithAvatar[i].avatar = avatar1;
-                    }    
+    
+                    if(myUserIndex != null){
+                        usersWithAvatar.splice(myUserIndex,1);
+                    }
+    
+                    this.setState({
+                            users:res.data.users,
+                            loading:false,
+                    }) 
+    
                 }
-
-                if(myUserIndex != null){
-                    usersWithAvatar.splice(myUserIndex,1);
+            ).catch(
+                err=>{
+                    console.log(err)
                 }
-
-                this.setState({
-                        users:res.data.users,
-                        loading:false,
-                }) 
-
-            }
-        ).catch(
+            )
+    
+            this.setState({
+                loading:false
+            })
+        }).catch(
             err=>{
                 console.log(err)
             }
         )
-
-        this.setState({
-            loading:false
-        })
     }
 
     getFilteredUsers = () => {
@@ -185,11 +187,10 @@ class Home extends Component{
                     
                       
                     
-                    <Link to={'/account'}>
                         <div className="icon" onClick={()=>{this.setState({redirectAccountPage:true,})}}>                            
-                                <svg onClick={()=>{this.setState({redirectAccountPage:true,})}} viewBox="0 0 24 24" width="21" height="21" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><circle onClick={()=>{this.setState({redirectAccountPage:true,})}} cx="11" cy="11" r="8"></circle><line onClick={()=>{this.setState({redirectAccountPage:true,})}} x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                <svg onClick={()=>{this.setState({redirectAccountPage:true,})}} viewBox="0 0 24 24" width="21" height="21" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" className="css-i6dzq1"><circle onClick={()=>{this.setState({redirectAccountPage:true,})}} cx="11" cy="11" r="8"></circle><line onClick={()=>{this.setState({redirectAccountPage:true,})}} x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                         </div>
-                    </Link>
+
                     
                 </div>
 
@@ -203,7 +204,7 @@ class Home extends Component{
                         </div>
                     ): this.getFilteredUsers().map( user => 
                         
-                                    (<div className="user">
+                                    (<div className="user" key={user.id}>
                                     <div className="avatar-cont">
                                             <img alt="" src={user.avatar}/>
                                     </div>
@@ -222,8 +223,8 @@ class Home extends Component{
                                                 <div className="avatar"/>
                                         </div>
                                         <div className="info-cont">
-                                            <div className="name"><div class="line"></div></div>
-                                            <div className="username"> <div class="line" style={{
+                                            <div className="name"><div className="line"></div></div>
+                                            <div className="username"> <div className="line" style={{
                                                 'width':'50%'
                                             }}></div> </div>
                                         </div>
@@ -233,8 +234,8 @@ class Home extends Component{
                                                 <div className="avatar"/>
                                         </div>
                                         <div className="info-cont">
-                                            <div className="name"><div class="line"></div></div>
-                                            <div className="username"> <div class="line" style={{
+                                            <div className="name"><div className="line"></div></div>
+                                            <div className="username"> <div className="line" style={{
                                                 'width':'50%'
                                             }}></div> </div>
                                         </div>
@@ -244,8 +245,8 @@ class Home extends Component{
                                                 <div className="avatar"/>
                                         </div>
                                         <div className="info-cont">
-                                            <div className="name"><div class="line"></div></div>
-                                            <div className="username"> <div class="line" style={{
+                                            <div className="name"><div className="line"></div></div>
+                                            <div className="username"> <div className="line" style={{
                                                 'width':'50%'
                                             }}></div> </div>
                                         </div>
@@ -255,8 +256,8 @@ class Home extends Component{
                                                 <div className="avatar"/>
                                         </div>
                                         <div className="info-cont">
-                                            <div className="name"><div class="line"></div></div>
-                                            <div className="username"> <div class="line" style={{
+                                            <div className="name"><div className="line"></div></div>
+                                            <div className="username"> <div className="line" style={{
                                                 'width':'50%'
                                             }}></div> </div>
                                         </div>
@@ -266,8 +267,8 @@ class Home extends Component{
                                                 <div className="avatar"/>
                                         </div>
                                         <div className="info-cont">
-                                            <div className="name"><div class="line"></div></div>
-                                            <div className="username"> <div class="line" style={{
+                                            <div className="name"><div className="line"></div></div>
+                                            <div className="username"> <div className="line" style={{
                                                 'width':'50%'
                                             }}></div> </div>
                                         </div>
@@ -277,8 +278,8 @@ class Home extends Component{
                                                 <div className="avatar"/>
                                         </div>
                                         <div className="info-cont">
-                                            <div className="name"><div class="line"></div></div>
-                                            <div className="username"> <div class="line" style={{
+                                            <div className="name"><div className="line"></div></div>
+                                            <div className="username"> <div className="line" style={{
                                                 'width':'50%'
                                             }}></div> </div>
                                         </div>

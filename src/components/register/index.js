@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import './index.css';
-import ilus from '../ilustrations/ilus.jpeg'; // with import
 import {Link} from 'react-router-dom';
 import API_CONFIG from '../../config/api';
 import axios from 'axios';

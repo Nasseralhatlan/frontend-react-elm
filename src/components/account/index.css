@@ -107,6 +107,8 @@
     font-family: 'Poppins', sans-serif;
     border-top-left-radius: 9px;
     border-bottom-left-radius: 9px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
     box-shadow: -1px -1px 83px 0px rgba(0,0,0,0.1);
     -webkit-box-shadow: -1px -1px 83px 0px rgba(0,0,0,0.1);
     -moz-box-shadow: -1px -1px 83px 0px rgba(0,0,0,0.1);
@@ -141,6 +143,7 @@
     -webkit-box-shadow: -1px -1px 83px 0px rgba(0,0,0,0.1);
     -moz-box-shadow: -1px -1px 83px 0px rgba(0,0,0,0.1);
     border-radius: 20px;
+    margin-bottom: 40px !important;
 }
 
 .users-list-cont .user{
