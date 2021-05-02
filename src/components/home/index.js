@@ -133,6 +133,7 @@ class Home extends Component{
                 }
             ).catch(
                 err=>{
+                    this.logoutHOME();
                     console.log(err)
                 }
             )
@@ -142,6 +143,7 @@ class Home extends Component{
             })
         }).catch(
             err=>{
+                this.logoutHOME();
                 console.log(err)
             }
         )

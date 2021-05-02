@@ -191,6 +191,7 @@ class Account extends Component{
                         MessageType:'danger',
                         Message:'Something went wrong try agin later !',
                     })
+                    this.logoutHOME();
                 }
             )
         }
@@ -219,6 +220,7 @@ class Account extends Component{
                             MessageType:'danger',
                             Message:'Something went wrong try agin later !',
                         })
+                        this.logoutHOME();
                     }
                    
                 }    
@@ -229,6 +231,8 @@ class Account extends Component{
                         MessageType:'danger',
                         Message:'Something went wrong try agin later !',
                     })
+                    this.logoutHOME();
+
                 }
             )
     }
